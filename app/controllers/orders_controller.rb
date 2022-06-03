@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @items ||= @order.line_items.map {|item| { 
+      product: Product.find(item[:product_id]), 
+      quantity: item[:quantity]
+    }}
   end
 
   def create
@@ -40,19 +44,22 @@ class OrdersController < ApplicationController
       email: params[:stripeEmail],
       total_cents: cart_subtotal_cents,
       stripe_charge_id: stripe_charge.id, # returned by stripe
+      # line_items: [ {product: , quantity:, item_price: ,  total_price: } , , ,]
     )
+## ENTRY {product:  , quantity:  }
 
-    enhanced_cart.each do |entry|
+### CREATING THE LINE ITEMS
+    enhanced_cart.each do |entry| ##ARRAY OF OBJECTS
       product = entry[:product]
       quantity = entry[:quantity]
-      order.line_items.new(
+      order.line_items.new( ## MENTOR QUESTION
         product: product,
         quantity: quantity,
         item_price: product.price,
         total_price: product.price * quantity
       )
     end
-    order.save!
+    order.save! ## Save to DB, if invalid, throws an error. 
     order
   end
 

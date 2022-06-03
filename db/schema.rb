@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 2021_06_26_062916) do
 
   create_table "line_items", force: :cascade do |t|
     t.bigint "order_id"
-    t.bigint "product_id"
+    t.bigint "product_id" 
+    #line_items has just product_id!!!!!
     t.integer "quantity"
     t.integer "item_price_cents"
     t.integer "total_price_cents"
