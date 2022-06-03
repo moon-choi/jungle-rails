@@ -30,7 +30,4 @@ class ApplicationController < ActionController::Base
     }
     cookies[:cart]
   end
-
-  http_basic_authenticate_with name: 'username', password: 'password'
-end
 end
