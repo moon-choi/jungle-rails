@@ -3,8 +3,18 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
   resources :about, only: [:index]
-
   resources :products, only: [:index, :show]
+  # get "/products/"
+  # get "/products/show"
+ # only is for get requests
+
+  # resources :products , except [:edit]
+  # get "/products/"
+  # get "/products/show"
+  # // post "/products/edit"
+  # post "/products/delete"
+  
+  ## controller > products.rb > index, show coressponds this 
   resources :categories, only: [:show]
 
   resource :cart, only: [:show] do
@@ -15,9 +25,13 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
 
   namespace :admin do
-    root to: 'dashboard#show'
+    root to:'dashboard#show'
     resources :products, except: [:edit, :update, :show]
-    resources :categories, except: [:edit, :update, :show]
+    # resources: sales, only: [:index]
+    resources :categories, only: [:index, :new, :create] do
+      post: :new
+      post: :create
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
