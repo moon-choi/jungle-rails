@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.order(created_at: :desc)
+    render "/admin/products"
   end
 
   def show
