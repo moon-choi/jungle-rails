@@ -94,6 +94,16 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    cypress-rails (0.5.4)
+      puma (>= 3.8.0)
+      railties (>= 5.2.0)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
+    database_cleaner-redis (2.0.0)
+      database_cleaner-core (~> 2.0.0)
+      redis
     diff-lcs (1.5.0)
     digest (3.1.0)
     dotenv (2.7.6)
@@ -203,6 +213,7 @@ GEM
       ffi (~> 1.0)
     rdoc (6.4.0)
       psych (>= 4.0.0)
+    redis (4.6.0)
     regexp_parser (2.3.1)
     rexml (3.2.5)
     rmagick (4.2.5)
@@ -294,6 +305,9 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   carrierwave
+  cypress-rails
+  database_cleaner-active_record
+  database_cleaner-redis
   dotenv-rails
   faker
   font-awesome-rails
