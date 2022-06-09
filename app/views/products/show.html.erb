@@ -11,7 +11,7 @@
 
       <div class="quantity">
       <% if @product.quantity == 0 %>
-          <span class="soldout">Sold out product detail</span> 
+          <span class="soldout">Sold out</span> 
           <span><%= humanized_money_with_symbol @product.price %></span>
       <% else %>
         <span><%= @product.quantity %> in stock at </span>
