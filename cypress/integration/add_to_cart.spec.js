@@ -3,12 +3,14 @@ describe('visit homepage', () => {
     cy.visit('localhost:3000')
   })
 
-  it('visit the home page and click Add to Cart buttons for one of the products', () => {
-    cy.get("h2").should("contain", "Where you can find any plants!"); // Works!
+  it('visit the home page and have nothing in cart', () => {
+    cy.get('nav a[href="/cart"]').contains('0')
   })
 
-  it("Your test should confirm that the count of the cart button changes when adding products to it", () => {
-    cy.get(".products article").should("be.visible");
+  it("add item to cart and my cart number goes up ", () => {
+    cy.get('nav a[href="/cart"]').contains('0')
+    cy.contains('Add').click({ force: true })
+    cy.get('nav a[href="/cart"]').contains('1')
   });
 
 })
